@@ -68,11 +68,14 @@ def test(model, dset_path, file_name=None, local_dset_path=None):
 def evaluate(args):
     torch.manual_seed(42)
     cuda_available = torch.cuda.is_available()
-    if not cuda_available:
-        raise ValueError("CUDA not available. GPU is required for evaluation. "
-                        "Please ensure PyTorch is installed with CUDA support and GPU is accessible.")
-    device = torch.device("cuda")
-    print(f"✓ Using GPU: {torch.cuda.get_device_name(0)}")
+    
+    # Use GPU if available, otherwise fall back to CPU
+    if cuda_available:
+        device = torch.device("cuda")
+        print(f"✓ Using GPU: {torch.cuda.get_device_name(0)}")
+    else:
+        device = torch.device("cpu")
+        print("⚠ CUDA not available. Using CPU (this will be slower).")
     # Convert baseline to int for directory name
     baseline_int = int(args.baseline)
     exp_name = "ccc_{}".format(baseline_int)
