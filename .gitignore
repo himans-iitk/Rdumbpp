@@ -1,0 +1,27 @@
+# Dataset files (should be streamed, not stored in Git)
+CCC/ccc_datasets/
+*.tar
+*.tar.gz
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# macOS
+.DS_Store
+
+# Logs
+logs/
+*.log
+
+# Model checkpoints (if any)
+*.pth
+*.pt
+*.ckpt
+
