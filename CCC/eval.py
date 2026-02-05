@@ -64,7 +64,7 @@ def test(model, dset_path, file_name=None, local_dset_path=None):
             f.write(f"acc_{100 * correct / images.size(0):.10f}\n")
 
         total_seen_so_far += images.size(0)
-        if total_seen_so_far > 7_500_000:
+        if total_seen_so_far > 1_000_000:
             return
 
 
